@@ -23,7 +23,10 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-                <field name="aliases" type="textarea" rows="10" label="PLG_SYSTEM_FONTAWESOME_FIELD_ALIASES" />
+                <field name="aliases" type="textarea" rows="10" label="PLG_SYSTEM_FONTAWESOME_FIELD_ALIASES" description="PLG_SYSTEM_FONTAWESOME_FIELD_ALIASES_DESC" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="prefix" type="text" default="fa" label="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX" description="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX_DESC" />
             </fieldset>
         </fields>
     </config>

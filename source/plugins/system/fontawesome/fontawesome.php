@@ -80,6 +80,8 @@ class plgSystemFontAwesome extends JPlugin
 	{
 		if (preg_match_all('/\{fa\ ([^\}]+)\}/', $body, $matches))
 		{
+			$prefix = $this->params->get('prefix');
+
 			foreach ($matches[0] as $index => $match)
 			{
                 $tags = array();
@@ -113,14 +115,14 @@ class plgSystemFontAwesome extends JPlugin
 
                     foreach($stackedTags as $stackedTag)
                     {
-                        $html[] = '<i class="fa ' . implode(' ', $stackedTag) . '"></i>';
+                        $html[] = '<i class="' . $prefix . ' ' . implode(' ', $stackedTag) . '"></i>';
                     }
 
                     $html[] = '</span>';
                 }
                 else
                 {
-                    $html[] = '<i class="fa ' . implode(' ', $tags) . '"></i>';
+                    $html[] = '<i class="' . $prefix . ' ' . implode(' ', $tags) . '"></i>';
                 }
 
                 $html = implode('', $html);
@@ -144,6 +146,8 @@ class plgSystemFontAwesome extends JPlugin
             $tags = explode(' ', $tags);
         }
 
+		$prefix = $this->params->get('prefix');
+
         $newTags = array();
         foreach($tags as $tag)
         {
@@ -154,8 +158,8 @@ class plgSystemFontAwesome extends JPlugin
                 continue;
             }
     
-            if (preg_match('/^fa-/', $tag) == false) {
-                $tag = 'fa-'.$tag;
+            if (!empty($prefix) && preg_match('/^' . $prefix . '-/', $tag) == false) {
+                $tag = $prefix.'-'.$tag;
             }
 
             $newTags[] = $tag;
