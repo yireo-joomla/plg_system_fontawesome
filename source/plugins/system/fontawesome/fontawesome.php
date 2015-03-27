@@ -90,7 +90,7 @@ class plgSystemFontAwesome extends JPlugin
 	{
 		if (preg_match_all('/\{fa\ ([^\}]+)\}/', $body, $matches))
 		{
-			$prefix = $this->params->get('prefix');
+			$prefix = $this->params->get('prefix', 'fa');
 
 			foreach ($matches[0] as $index => $match)
 			{
@@ -156,7 +156,7 @@ class plgSystemFontAwesome extends JPlugin
             $tags = explode(' ', $tags);
         }
 
-		$prefix = $this->params->get('prefix');
+		$prefix = $this->params->get('prefix', 'fa');
 
         $newTags = array();
         foreach($tags as $tag)
