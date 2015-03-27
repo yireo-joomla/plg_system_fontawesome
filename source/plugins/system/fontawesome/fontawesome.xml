@@ -27,6 +27,7 @@
             </fieldset>
             <fieldset name="advanced">
                 <field name="prefix" type="text" default="fa" label="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX" description="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX_DESC" />
+                <field name="path" type="text" default="" label="PLG_SYSTEM_FONTAWESOME_FIELD_PATH" description="PLG_SYSTEM_FONTAWESOME_FIELD_PATH_DESC" />
             </fieldset>
         </fields>
     </config>
