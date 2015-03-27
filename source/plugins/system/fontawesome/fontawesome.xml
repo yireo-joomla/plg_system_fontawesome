@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_FONTAWESOME</name>
+    <author>Yireo</author>
+    <creationDate>March 2015</creationDate>
+    <copyright>Copyright (C) 2015 Yireo.com. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <authorEmail>info@yireo.com</authorEmail>
+    <authorUrl>www.yireo.com</authorUrl>
+    <version>0.0.1</version>
+    <description>PLG_SYSTEM_FONTAWESOME_DESC</description>
+
+    <files>
+        <filename plugin="fontawesome">fontawesome.php</filename>
+        <filename>index.html</filename>
+    </files>
+
+    <media destination="plg_fontawesome">
+        <folder>js</folder>
+    </media>
+
+    <languages>
+        <language tag="en-GB">en-GB.plg_system_fontawesome.ini</language>
+        <language tag="en-GB">en-GB.plg_system_fontawesome.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="aliases" type="textarea" rows="10" label="PLG_SYSTEM_FONTAWESOME_FIELD_ALIASES" />
+            </fieldset>
+        </fields>
+    </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="plg_system_fontawesome">http://www.yireo.com/updates/plg_system_fontawesome.xml</server>
+    </updateservers>
+</extension>
