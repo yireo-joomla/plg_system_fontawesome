@@ -15,10 +15,6 @@
         <filename>index.html</filename>
     </files>
 
-    <media destination="plg_fontawesome">
-        <folder>js</folder>
-    </media>
-
     <languages>
         <language tag="en-GB">en-GB.plg_system_fontawesome.ini</language>
         <language tag="en-GB">en-GB.plg_system_fontawesome.sys.ini</language>
