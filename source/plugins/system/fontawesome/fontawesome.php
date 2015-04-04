@@ -1,6 +1,6 @@
 <?php
 /**
- * Joomla! System plugin - WebP
+ * Joomla! System plugin - FontAwesome tags
  *
  * @author    Yireo (info@yireo.com)
  * @copyright Copyright 2015
