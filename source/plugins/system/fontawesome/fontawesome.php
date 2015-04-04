@@ -38,7 +38,7 @@ class plgSystemFontAwesome extends JPlugin
 			return false;
 		}
 
-        $document = JFactory::getDocument();
+		$document = JFactory::getDocument();
 
 		$path = $this->params->get('path');
 
@@ -69,7 +69,7 @@ class plgSystemFontAwesome extends JPlugin
 			return false;
 		}
 
-        // @todo: Skip when editing in frontend
+		// @todo: Skip when editing in frontend
 
 		// Get the body and fetch a list of files
 		$body = JResponse::getBody();
@@ -94,89 +94,93 @@ class plgSystemFontAwesome extends JPlugin
 
 			foreach ($matches[0] as $index => $match)
 			{
-                $tags = array();
-                $stackedTags = array();
+				$tags = array();
+				$stackedTags = array();
 
-                $arguments = $matches[1][$index];
-                $aliases = $this->getAliases();
+				$arguments = $matches[1][$index];
+				$aliases = $this->getAliases();
 
-                if (isset($aliases[$arguments]))
-                {
-                    $arguments = $aliases[$arguments];
-                }
+				if (isset($aliases[$arguments]))
+				{
+					$arguments = $aliases[$arguments];
+				}
 
-                // First detect the stacked items
-                if (preg_match_all('/\[([^\]]+)\]/', $arguments, $stackMatches))
-                {
-                    foreach($stackMatches[1] as $stackIndex => $stackMatch)
-                    {
-                        $newStackedTags = $this->filterTags($stackMatch);
-                        $stackedTags[] = $newStackedTags;
-                        $arguments = str_replace($stackMatches[0][$stackIndex], '', $arguments);
-                    }
-                }
+				// First detect the stacked items
+				if (preg_match_all('/\[([^\]]+)\]/', $arguments, $stackMatches))
+				{
+					foreach ($stackMatches[1] as $stackIndex => $stackMatch)
+					{
+						$newStackedTags = $this->filterTags($stackMatch);
+						$stackedTags[] = $newStackedTags;
+						$arguments = str_replace($stackMatches[0][$stackIndex], '', $arguments);
+					}
+				}
 
-                $tags = $this->filterTags($arguments);
-                $html = array();
+				$tags = $this->filterTags($arguments);
+				$html = array();
 
-                if(!empty($stackedTags))
-                {
-                    $html[] = '<span class="' . implode(' ', $tags) . '">';
+				if (!empty($stackedTags))
+				{
+					$html[] = '<span class="' . implode(' ', $tags) . '">';
 
-                    foreach($stackedTags as $stackedTag)
-                    {
-                        $html[] = '<i class="' . $prefix . ' ' . implode(' ', $stackedTag) . '"></i>';
-                    }
+					foreach ($stackedTags as $stackedTag)
+					{
+						$html[] = '<i class="' . $prefix . ' ' . implode(' ', $stackedTag) . '"></i>';
+					}
 
-                    $html[] = '</span>';
-                }
-                else
-                {
-                    $html[] = '<i class="' . $prefix . ' ' . implode(' ', $tags) . '"></i>';
-                }
+					$html[] = '</span>';
+				}
+				else
+				{
+					$html[] = '<i class="' . $prefix . ' ' . implode(' ', $tags) . '"></i>';
+				}
 
-                $html = implode('', $html);
+				$html = implode('', $html);
 
-                $body = str_replace($match, $html, $body);
-            }
-        }
+				$body = str_replace($match, $html, $body);
+			}
+		}
 
-        return $body;
-    }
+		return $body;
+	}
 
 	/**
 	 * Method to filter a fa tag
+	 *
+	 * @param array $tags
 	 *
 	 * @return array
 	 */
 	protected function filterTags($tags)
 	{
-        if (!is_array($tags))
-        {
-            $tags = explode(' ', $tags);
-        }
+		if (!is_array($tags))
+		{
+			$tags = explode(' ', $tags);
+		}
 
 		$prefix = $this->params->get('prefix', 'fa');
 
-        $newTags = array();
-        foreach($tags as $tag)
-        {
-            $tag = trim($tag);
-        
-            if (empty($tag))
-            {
-                continue;
-            }
-    
-            if (!empty($prefix) && preg_match('/^' . $prefix . '-/', $tag) == false) {
-                $tag = $prefix.'-'.$tag;
-            }
+		$newTags = array();
 
-            $newTags[] = $tag;
-        }
+		foreach ($tags as $tag)
+		{
+			$tag = trim($tag);
 
-        return $newTags;
-    }
+			if (empty($tag))
+			{
+				continue;
+			}
+
+			if (!empty($prefix) && preg_match('/^' . $prefix . '-/', $tag) == false)
+			{
+				$tag = $prefix . '-' . $tag;
+			}
+
+			$newTags[] = $tag;
+		}
+
+		return $newTags;
+	}
 
 	/**
 	 * Method to fetch a listing of all aliases
@@ -185,36 +189,36 @@ class plgSystemFontAwesome extends JPlugin
 	 */
 	protected function getAliases()
 	{
-        if (empty($this->aliases))
-        {
-            $this->aliases = array();
+		if (empty($this->aliases))
+		{
+			$this->aliases = array();
 
-            $aliases = $this->params->get('aliases');
-            $aliases = trim($aliases);
+			$aliases = $this->params->get('aliases');
+			$aliases = trim($aliases);
 
-            if (!empty($aliases))
-            {
-                $aliasValues = explode(',', $aliases);
+			if (!empty($aliases))
+			{
+				$aliasValues = explode(',', $aliases);
 
-                foreach ($aliasValues as $alias)
-                {
-                    $alias = trim($alias);
+				foreach ($aliasValues as $alias)
+				{
+					$alias = trim($alias);
 
-                    if (empty($alias))
-                    {
-                        continue;
-                    }
+					if (empty($alias))
+					{
+						continue;
+					}
 
-                    $alias = explode('=', $alias);
-                    $name = $alias[0];
-                    $value = $alias[1];
-                    $value = str_replace('"', '', $value);
+					$alias = explode('=', $alias);
+					$name = $alias[0];
+					$value = $alias[1];
+					$value = str_replace('"', '', $value);
 
-                    $this->aliases[$name] = $value;
-                }
-            }
-        }
-    
-        return $this->aliases;
+					$this->aliases[$name] = $value;
+				}
+			}
+		}
+
+		return $this->aliases;
 	}
 }
