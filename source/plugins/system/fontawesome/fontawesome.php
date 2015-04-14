@@ -90,7 +90,13 @@ class plgSystemFontAwesome extends JPlugin
 	{
 		if (preg_match_all('/\{fa\ ([^\}]+)\}/', $body, $matches))
 		{
-			$prefix = $this->params->get('prefix', 'fa');
+			$prefix = trim($this->params->get('prefix', 'fa'));
+			$element = trim($this->params->get('element', 'i'));
+
+            if (empty($element))
+            {
+                $element = 'i';
+            }
 
 			foreach ($matches[0] as $index => $match)
 			{
@@ -125,14 +131,14 @@ class plgSystemFontAwesome extends JPlugin
 
 					foreach ($stackedTags as $stackedTag)
 					{
-						$html[] = '<i class="' . $prefix . ' ' . implode(' ', $stackedTag) . '"></i>';
+						$html[] = '<' . $element . ' class="' . $prefix . ' ' . implode(' ', $stackedTag) . '"></' . $element . '>';
 					}
 
 					$html[] = '</span>';
 				}
 				else
 				{
-					$html[] = '<i class="' . $prefix . ' ' . implode(' ', $tags) . '"></i>';
+					$html[] = '<' . $element . ' class="' . $prefix . ' ' . implode(' ', $tags) . '"></' . $element . '>';
 				}
 
 				$html = implode('', $html);
