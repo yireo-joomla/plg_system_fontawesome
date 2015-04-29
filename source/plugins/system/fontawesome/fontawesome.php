@@ -38,18 +38,24 @@ class plgSystemFontAwesome extends JPlugin
 			return false;
 		}
 
-		$document = JFactory::getDocument();
+		$loadcss = $this->params->get('loadcss');
 
-		$path = $this->params->get('path');
+		if ($loadcss == 1)
+		{
+			$document = JFactory::getDocument();
 
-		if (!empty($path))
-		{
-			$document->addStylesheet($path);
+			$path = $this->params->get('path');
+
+			if (!empty($path))
+			{
+				$document->addStylesheet($path);
+			}
+			else
+			{
+				$document->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+			}
 		}
-		else
-		{
-			$document->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-		}
+
 	}
 
 	/**
