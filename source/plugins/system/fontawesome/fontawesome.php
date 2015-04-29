@@ -17,7 +17,7 @@ jimport('joomla.plugin.plugin');
 /**
  * Font Awesome System Plugin
  */
-class plgSystemFontAwesome extends JPlugin
+class PlgSystemFontAwesome extends JPlugin
 {
 	/**
 	 * Event onAfterDispatch
@@ -55,7 +55,6 @@ class plgSystemFontAwesome extends JPlugin
 				$document->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 			}
 		}
-
 	}
 
 	/**
@@ -99,10 +98,10 @@ class plgSystemFontAwesome extends JPlugin
 			$prefix = trim($this->params->get('prefix', 'fa'));
 			$element = trim($this->params->get('element', 'i'));
 
-            if (empty($element))
-            {
-                $element = 'i';
-            }
+			if (empty($element))
+			{
+				$element = 'i';
+			}
 
 			foreach ($matches[0] as $index => $match)
 			{
