@@ -28,6 +28,10 @@
             <fieldset name="advanced">
                 <field name="prefix" type="text" default="fa" label="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX" description="PLG_SYSTEM_FONTAWESOME_FIELD_PREFIX_DESC" />
                 <field name="path" type="text" default="" label="PLG_SYSTEM_FONTAWESOME_FIELD_PATH" description="PLG_SYSTEM_FONTAWESOME_FIELD_PATH_DESC" />
+                <field name="loadcss" type="radio" class="btn-group btn-group-yesno" default="1" label="PLG_SYSTEM_FONTAWESOME_FIELD_LOADCSS" description="PLG_SYSTEM_FONTAWESOME_FIELD_LOADCSS_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
                 <field name="element" type="text" default="i" label="PLG_SYSTEM_FONTAWESOME_FIELD_ELEMENT" description="PLG_SYSTEM_FONTAWESOME_FIELD_ELEMENT_DESC" />
             </fieldset>
         </fields>
