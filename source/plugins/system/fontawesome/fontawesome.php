@@ -52,7 +52,7 @@ class PlgSystemFontAwesome extends JPlugin
 			}
 			else
 			{
-				$document->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+				$document->addStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 			}
 		}
 	}
