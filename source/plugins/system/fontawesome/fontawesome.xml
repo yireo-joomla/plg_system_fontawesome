@@ -38,6 +38,6 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="plg_system_fontawesome">http://www.yireo.com/updates/plg_system_fontawesome.xml</server>
+        <server type="extension" priority="1" name="plg_system_fontawesome">https://www.yireo.com/updates/plg_system_fontawesome.xml</server>
     </updateservers>
 </extension>
